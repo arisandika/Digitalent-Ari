@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Event</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body onLoad="alert('Halaman ini sedang di-loading, ini adalah Event On Loading')">
+  <div class="container">
+    <form id="form">
+      <h3>Event Submit</h3>
+      <label for="nama">Nama</label>
+      <input type="text" name="nama" id="nama" autocomplete="nama" required />
+      <label for="nim">NIM</label>
+      <input type="text" name="nim" id="nim" autocomplete="nama" required />
+      <button type="submit">Submit</button>
+    </form>
+    <ul></ul>
+  </div>
+  <div class="container" style="margin-top: 30px;">
+    <h3>Event Mouse Over & Mouse Out</h3>
+    <p id="paragraf" onMouseOver="whenMouseOver()" onMouseOut="whenMouseOut()">
+      Arahkan mouse ke
+      area ini!</p>
+  </div>
+
+  <script>
+    // Event Submit
+    document.getElementById("form").addEventListener("submit", () => {
+      event.preventDefault();
+
+      const nama = document.getElementById("nama").value;
+      const nim = document.getElementById("nim").value;
+
+      const ul = document.querySelector("ul");
+      const newList = document.createElement("li");
+      const listContent = document.createTextNode(
+        `\nNama anda adalah "${nama}" dengan Nim ${nim}`
+      );
+      newList.appendChild(listContent);
+      ul.appendChild(newList);
+    });
+    document.getElementById("form").reset();
+
+    // Event MouseOver
+    function whenMouseOver() {
+      document.getElementById("paragraf").style.backgroundColor = "deepskyblue";
+    }
+
+    function whenMouseOut() {
+      document.getElementById("paragraf").style.backgroundColor = "yellow";
+    }
+  </script>
+</body>
+
+</html>
