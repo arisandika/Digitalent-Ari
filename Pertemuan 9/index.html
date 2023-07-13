@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <h3>Input identitas Mahasiswa</h3>
+    <form id="form">
+      <label for="nama">Nama</label>
+      <input type="text" name="nama" id="nama" autocomplete="nama" required />
+      <label for="nim">NIM</label>
+      <input type="text" name="nim" id="nim" autocomplete="nama" required />
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" autocomplete="email" required />
+      <label for="gender">Jenis Kelamin</label>
+      <select name="gender" id="gender" style="padding: 4px">
+        <option disabled>Pilih jenis Kelamin</option>
+        <option value="laki">Laki-laki</option>
+        <option value="perempuan">Perempuan</option>
+      </select>
+      <br />
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    document
+      .getElementById("form")
+      .addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        var nama = document.getElementById("nama").value;
+        var nim = document.getElementById("nim").value;
+        var email = document.getElementById("email").value;
+        var gender = document.getElementById("gender").value;
+
+        var infoTambahan = prompt(
+          "Berikan informasi yang ingin ditambahkan"
+        );
+
+        if (infoTambahan) {
+          alert(
+            `Nama : ${nama} \nNIM : ${nim} \nEmail : ${email} \nJenis Kelamin : ${gender} \nPesan : ${infoTambahan}`
+          );
+        } else {
+          alert(
+            `Nama : ${nama} \nNIM : ${nim} \nEmail : ${email} \nJenis Kelamin : ${gender}`
+          );
+        }
+
+        var konfirmasi = confirm(
+          "Apakah anda yakin ingin men-submit form ini?"
+        );
+
+        if (konfirmasi) {
+          document.getElementById("form").reset();
+        } else {
+          alert("Form dibatalkan");
+        }
+      });
+  </script>
+</body>
+
+</html>
